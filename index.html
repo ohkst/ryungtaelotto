@@ -1,71 +1,135 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>로또 번호 생성기</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>오늘의 로또 번호</title>
   <style>
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      padding: 20px;
-      background: #f2f2f2;
-      color: #333;
+      background: linear-gradient(to bottom, #3b0a75, #1e003e);
+      color: #fff;
     }
-    h1 {
+    header {
       text-align: center;
-      color: #2b7a78;
+      padding: 40px 20px 20px;
+      background: linear-gradient(to right, #ffcc00, #ff6699);
+      color: #1e003e;
+      font-size: 2.5em;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+    .container {
+      padding: 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .reroll-btn {
+      display: block;
+      margin: 0 auto 20px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(to right, #ffcc00, #ff6699);
+      color: #1e003e;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ffcc00;
     }
     .date {
       text-align: center;
+      font-size: 1.2em;
+      color: #ffcc00;
       margin-bottom: 10px;
-      font-size: 1.1em;
-      color: #555;
     }
-    .button-container {
-      text-align: center;
+    .recent {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #66ccff;
+      border-radius: 12px;
+      padding: 15px;
       margin-bottom: 20px;
     }
-    button {
-      background-color: #3aafa9;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 6px;
-      font-size: 1em;
-      cursor: pointer;
+    .recent-title {
+      font-size: 1.2em;
+      color: #66ccff;
+      margin-bottom: 8px;
+    }
+    .recent-numbers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .recent-numbers .ball {
+      background: #66ccff;
     }
     .section {
-      background: #ffffff;
-      padding: 15px 20px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid #ffcc00;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
     }
-    .title {
-      font-weight: bold;
-      margin-bottom: 8px;
-      color: #3f3f3f;
+    .section h2 {
+      margin-top: 0;
+      font-size: 1.5em;
+      color: #ffcc00;
     }
     .numbers {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .ball {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #fff;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: 1.2em;
-      letter-spacing: 4px;
-      color: #17252a;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-
-  <h1>오늘의 로또 번호</h1>
-  <div class="date" id="todayDate"></div>
-
-  <div class="button-container">
-    <button onclick="reroll()">리롤</button>
+  <header>오늘의 로또 번호</header>
+  <div class="container">
+    <button class="reroll-btn" onclick="reroll()">리롤</button>
+    <div class="date" id="todayDate"></div>
+    <div class="recent" id="recentDisplay">
+      <div class="recent-title">최근 5회차 당첨 번호</div>
+      <div class="recent-numbers" id="recentNumbers"></div>
+    </div>
+    <div id="results"></div>
   </div>
-
-  <div id="results"></div>
 
   <script>
     let rerollOffset = 0;
+
+    const methods = [
+      "홀짝 3:3 조합",
+      "끝자리 분산 조합",
+      "연번 포함 조합",
+      "번호대 균형 조합",
+      "간격 일정 조합",
+      "소수 번호 조합",
+      "번호대 구간별 분산",
+      "완전 랜덤 조합"
+    ];
+
+    const mockRecent = [
+      [5, 12, 23, 31, 34, 42],
+      [7, 14, 19, 28, 33, 45],
+      [1, 8, 13, 26, 39, 44],
+      [3, 6, 18, 21, 36, 40],
+      [2, 11, 25, 30, 38, 43]
+    ].flat();
 
     function seedRandom(seed) {
       let x = Math.sin(seed) * 10000;
@@ -75,49 +139,99 @@
       };
     }
 
-    function generateLottoNumbers(randomFn) {
-      const numbers = new Set();
-      while (numbers.size < 6) {
-        numbers.add(Math.floor(randomFn() * 45) + 1);
+    function getRandomFromArray(arr, count, rand) {
+      const copy = [...arr];
+      const result = [];
+      while (result.length < count && copy.length > 0) {
+        const index = Math.floor(rand() * copy.length);
+        result.push(copy.splice(index, 1)[0]);
       }
-      return Array.from(numbers).sort((a, b) => a - b);
+      return result;
     }
 
-    function reroll() {
-      rerollOffset += 1;
-      renderNumbers();
+    function generateLotto(method, rand) {
+      const numbers = Array.from({ length: 45 }, (_, i) => i + 1);
+      switch (method) {
+        case "홀짝 3:3 조합":
+          const odds = numbers.filter(n => n % 2 === 1);
+          const evens = numbers.filter(n => n % 2 === 0);
+          return [...getRandomFromArray(odds, 3, rand), ...getRandomFromArray(evens, 3, rand)].sort((a,b)=>a-b);
+        case "끝자리 분산 조합":
+          const res = [];
+          while (res.length < 6) {
+            const n = Math.floor(rand() * 45) + 1;
+            if (!res.some(x => x % 10 === n % 10)) res.push(n);
+          }
+          return res.sort((a, b) => a - b);
+        case "연번 포함 조합":
+          const start = Math.floor(rand() * 44) + 1;
+          const pair = [start, start + 1];
+          const rest = getRandomFromArray(numbers.filter(n => !pair.includes(n)), 4, rand);
+          return [...pair, ...rest].sort((a,b)=>a-b);
+        case "번호대 균형 조합":
+          return [
+            ...getRandomFromArray(numbers.slice(0, 10), 1, rand),
+            ...getRandomFromArray(numbers.slice(10, 20), 1, rand),
+            ...getRandomFromArray(numbers.slice(20, 30), 1, rand),
+            ...getRandomFromArray(numbers.slice(30, 40), 1, rand),
+            ...getRandomFromArray(numbers.slice(40), 1, rand),
+            ...getRandomFromArray(numbers, 1, rand)
+          ].sort((a,b)=>a-b);
+        case "간격 일정 조합":
+          const gap = Math.floor(rand() * 5) + 2;
+          const base = Math.floor(rand() * 10) + 1;
+          return Array.from({ length: 6 }, (_, i) => base + i * gap).filter(n => n <= 45).sort((a,b)=>a-b);
+        case "소수 번호 조합":
+          const primes = [2,3,5,7,11,13,17,19,23,29,31,37,41,43];
+          return getRandomFromArray(primes, 6, rand).sort((a,b)=>a-b);
+        case "번호대 구간별 분산":
+          return getRandomFromArray(numbers, 6, rand).sort((a,b)=>a-b);
+        case "완전 랜덤 조합":
+        default:
+          return getRandomFromArray(numbers, 6, rand).sort((a,b)=>a-b);
+      }
     }
 
-    function renderNumbers() {
-      const today = new Date();
-      const seed = parseInt(today.toISOString().slice(0, 10).replace(/-/g, '')) + rerollOffset;
-      const rand = seedRandom(seed);
-      const methods = [
-        "고빈도 번호 기반",
-        "홀짝 3:3 조합",
-        "끝자리 분산 조합",
-        "연번 포함 조합",
-        "번호대 균형 조합"
-      ];
-
-      document.getElementById("todayDate").textContent = `생성일: ${today.toLocaleDateString("ko-KR")}`;
-      const resultsContainer = document.getElementById("results");
-      resultsContainer.innerHTML = "";
-
-      methods.forEach(method => {
-        const nums = generateLottoNumbers(rand);
-        const section = document.createElement("div");
-        section.className = "section";
-        section.innerHTML = `
-          <div class="title">${method}</div>
-          <div class="numbers">${nums.join("  ")}</div>
-        `;
-        resultsContainer.appendChild(section);
+    function renderRecentNumbers() {
+      const area = document.getElementById("recentNumbers");
+      area.innerHTML = "";
+      const set = Array.from(new Set(mockRecent)).sort((a,b)=>a-b);
+      set.forEach(n => {
+        const ball = document.createElement("div");
+        ball.className = "ball";
+        ball.textContent = n;
+        area.appendChild(ball);
       });
     }
 
-    // 초기 실행
-    renderNumbers();
+    function reroll() {
+      rerollOffset++;
+      render();
+    }
+
+    function render() {
+      const today = new Date();
+      const seed = parseInt(today.toISOString().slice(0,10).replace(/-/g,'')) + rerollOffset;
+      const rand = seedRandom(seed);
+      document.getElementById("todayDate").textContent = `생성일: ${today.toLocaleDateString("ko-KR")}`;
+      const resultBox = document.getElementById("results");
+      resultBox.innerHTML = "";
+      methods.forEach(method => {
+        const numbers = generateLotto(method, rand);
+        const section = document.createElement("div");
+        section.className = "section";
+        section.innerHTML = `
+          <h2>${method}</h2>
+          <div class="numbers">
+            ${numbers.map(n => `<div class="ball">${n}</div>`).join("")}
+          </div>
+        `;
+        resultBox.appendChild(section);
+      });
+    }
+
+    renderRecentNumbers();
+    render();
   </script>
 </body>
 </html>
