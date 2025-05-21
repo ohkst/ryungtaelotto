@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f2f5; /* Light neutral background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.color-converter-container {
+    width: 90%;
+    max-width: 450px; /* Compact width */
+    background-color: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 25px 30px;
+}
+
+.color-converter-container header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 15px;
+}
+
+.color-converter-container header h1 {
+    font-size: 1.8em; /* Slightly smaller for a utility page */
+    color: #2c3e50; /* Dark blue/gray */
+    margin-bottom: 5px;
+}
+
+.color-converter-container header p {
+    font-size: 0.9em;
+    color: #7f8c8d; /* Muted text color */
+}
+
+.color-picker-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.color-picker-section label {
+    font-size: 1em;
+    color: #34495e;
+    margin-bottom: 8px;
+}
+
+#html-color-picker {
+    width: 100px; /* Standard size for color picker */
+    height: 50px; /* Standard size for color picker */
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.color-preview {
+    width: 100%;
+    height: 120px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff0000; /* Default, will be updated by JS */
+    transition: background-color 0.3s ease;
+}
+
+#preview-text {
+    color: white; /* Will be dynamically changed by JS to contrast with background */
+    font-size: 1em;
+    text-shadow: 0 0 3px black, 0 0 3px black; /* Ensure visibility */
+}
+
+.color-inputs-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between input groups */
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between label, input, and button */
+}
+
+.input-group label {
+    font-size: 1em;
+    color: #34495e;
+    width: 50px; /* Fixed width for labels */
+    text-align: right;
+}
+
+.input-group input[type="text"] {
+    flex-grow: 1; /* Input field takes remaining space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95em;
+    font-family: monospace; /* Good for color codes */
+}
+
+.input-group input[type="text"].invalid {
+    border-color: red;
+    background-color: #ffebee;
+}
+
+.copy-button {
+    padding: 8px 12px;
+    font-size: 0.85em;
+    background-color: #7f8c8d; /* Muted button color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.copy-button:hover {
+    background-color: #525f63;
+}
+
+#error-message-color {
+    font-size: 0.9em;
+    color: #c0392b; /* Red for errors */
+    background-color: #f9ebea;
+    border: 1px solid #f5b7b1;
+    border-radius: 4px;
+    padding: 8px;
+    margin-top: 15px;
+    text-align: left;
+}
+#error-message-color:empty {
+    display: none; /* Hide if no error message */
+}
+
+
+.color-converter-container footer {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #e8e8e8;
+    font-size: 0.9em;
+}
+.color-converter-container footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+.color-converter-container footer a:hover {
+    text-decoration: underline;
+}

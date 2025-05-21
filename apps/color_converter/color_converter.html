@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컬러 선택 및 변환기</title>
+    <link rel="stylesheet" href="color_style.css">
+</head>
+<body>
+    <div class="color-converter-container">
+        <header>
+            <h1>컬러 선택 및 변환기</h1>
+            <p>색상을 선택하거나 값을 입력하면 HEX, RGB, HSL 형식으로 변환됩니다.</p>
+        </header>
+        <main class="color-converter-main">
+            <div class="color-picker-section">
+                <label for="html-color-picker">색상 선택 도구:</label>
+                <input type="color" id="html-color-picker" value="#ff0000"> <!-- Default to red -->
+            </div>
+
+            <div id="color-preview" class="color-preview">
+                <span id="preview-text">선택된 색상</span>
+            </div>
+
+            <div class="color-inputs-section">
+                <div class="input-group">
+                    <label for="hex-input">HEX:</label>
+                    <input type="text" id="hex-input" placeholder="#RRGGBB">
+                    <button class="copy-button" data-format="hex">복사</button>
+                </div>
+                <div class="input-group">
+                    <label for="rgb-input">RGB:</label>
+                    <input type="text" id="rgb-input" placeholder="rgb(R, G, B)">
+                    <button class="copy-button" data-format="rgb">복사</button>
+                </div>
+                <div class="input-group">
+                    <label for="hsl-input">HSL:</label>
+                    <input type="text" id="hsl-input" placeholder="hsl(H, S%, L%)">
+                    <button class="copy-button" data-format="hsl">복사</button>
+                </div>
+            </div>
+            <div id="error-message-color" style="color:red; margin-top:10px; min-height:1.2em;"></div>
+        </main>
+        <footer>
+            <p><a href="../../index.html">포털 홈으로 돌아가기</a></p>
+        </footer>
+    </div>
+    <script src="color_script.js"></script>
+</body>
+</html>
