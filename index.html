@@ -3,77 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>행운의 로또 카지노</title> <!-- New Title -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Placeholder for a casino-themed font if available via CDN, e.g., Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>다기능 유틸리티 허브</title>
+    <link rel="stylesheet" href="portal_style.css"> <!-- Link to the new portal CSS (to be created in a later step) -->
 </head>
 <body>
-    <div class="casino-container">
-        <header class="casino-header">
-            <h1>행운의 로또 카지노</h1>
-            <button id="sound-toggle-button" aria-label="Sound On/Off">🔊</button> <!-- Sound Toggle -->
+    <div class="portal-container">
+        <header>
+            <h1>다기능 유틸리티 허브</h1>
         </header>
-
-        <div class="balance-bet-section">
-            <div class="balance-display">
-                잔액: <span id="balance-amount">$1000</span>
-            </div>
-            <div class="bet-controls">
-                베팅 금액:
-                <button class="bet-option" data-bet="1">$1</button>
-                <button class="bet-option" data-bet="5">$5</button>
-                <button class="bet-option" data-bet="10" aria-pressed="true">$10</button> <!-- Default selected bet -->
-                <button class="bet-option" data-bet="25">$25</button>
-                <button class="bet-option" data-bet="50">$50</button>
-            </div>
-            <div class="win-display">
-                지난 당첨금: <span id="last-win-amount">$0</span>
-            </div>
-        </div>
-
-        <div class="strategy-selection-section">
-            <label for="lotto-strategy-select">번호 생성 전략 선택:</label>
-            <select id="lotto-strategy-select">
-                <option value="random" selected>완전 랜덤 조합</option>
-                <option value="evenOdd33">홀짝 3:3 조합</option>
-                <option value="lastDigitDistributed">끝자리 분산 조합</option>
-                <option value="sequentialIncluded">연번 포함 조합</option>
-                <option value="rangeBalanced">번호대 균형 조합</option>
-                <option value="fixedInterval">간격 일정 조합</option>
-                <option value="primeCombination">소수 번호 조합</option>
-                <option value="rangeIntervalDistributed">번호대 구간별 분산</option>
-            </select>
-        </div>
-
-        <main class="lotto-main">
-            <div id="jackpot-message-area" class="jackpot-message" aria-live="polite">
-                <!-- Jackpot messages will appear here -->
-            </div>
-            <div id="lotto-numbers-display" class="lotto-numbers-wrapper">
-                <!-- Numbers will be displayed here, possibly with slot-like individual containers -->
-                <div class="lotto-slot">?</div>
-                <div class="lotto-slot">?</div>
-                <div class="lotto-slot">?</div>
-                <div class="lotto-slot">?</div>
-                <div class="lotto-slot">?</div>
-                <div class="lotto-slot">?</div>
-            </div>
-            <button id="generate-button" class="casino-button">번호 생성</button>
-        </main>
-
-        <aside class="history-section">
-            <h2>최근 당첨 번호</h2>
-            <ul id="history-list">
-                <!-- History items will be populated here by JS -->
-                <li>-</li> <!-- Placeholder -->
+        <nav>
+            <ul>
+                <li><a href="apps/lotto_casino/lotto_casino.html">행운의 로또 카지노</a></li>
+                <!-- Future app links will be added here -->
             </ul>
-        </aside>
-
-        <footer class="casino-footer">
-            <p>실제 돈으로 하는 게임이 아닙니다. 재미로만 즐기세요!</p>
+        </nav>
+        <footer>
+            <p>&copy; 2023 유틸리티 허브</p>
         </footer>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
