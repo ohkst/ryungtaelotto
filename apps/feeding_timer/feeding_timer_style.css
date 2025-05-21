@@ -1,0 +1,93 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif; /* Clean, modern font */
+    margin: 0;
+    background-color: #f7f9fc; /* Soft, light background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center content vertically */
+    min-height: 100vh;
+    text-align: center;
+}
+
+.timer-container {
+    width: 90%;
+    max-width: 400px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    padding: 30px 35px;
+}
+
+.timer-container header {
+    margin-bottom: 25px;
+}
+
+.timer-container header h1 {
+    font-size: 2em;
+    color: #2c3e50; /* Dark slate blue */
+    margin: 0;
+}
+
+.timer-display {
+    font-family: 'Courier New', Courier, monospace; /* Monospace for timer */
+    font-size: 3.5em; /* Large timer display */
+    color: #34495e; /* Darker text for numbers */
+    background-color: #ecf0f1; /* Light gray background for display */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center; /* Center buttons */
+    gap: 20px; /* Space between buttons */
+}
+
+.button {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    min-width: 120px; /* Ensure buttons have a good width */
+}
+
+.button.control {
+    background-color: #3498db; /* Blue for Start/Pause/Resume */
+    color: white;
+}
+.button.control:hover {
+    background-color: #2980b9;
+}
+
+.button.reset {
+    background-color: #e74c3c; /* Red for Reset */
+    color: white;
+}
+.button.reset:hover {
+    background-color: #c0392b;
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+
+.timer-container footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.9em;
+}
+.timer-container footer a {
+    color: #3498db; /* Blue link color */
+    text-decoration: none;
+}
+.timer-container footer a:hover {
+    text-decoration: underline;
+}
