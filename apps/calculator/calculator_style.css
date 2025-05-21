@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #e0e0e0; /* Light background for the page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.calculator-container {
+    width: 100%;
+    max-width: 360px; /* Typical calculator width */
+    background-color: #333; /* Dark calculator body */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    padding: 20px;
+}
+
+.calculator-container header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.calculator-container header h1 {
+    font-size: 1.8em;
+    color: #f5f5f5; /* Light text for dark background */
+    margin: 0;
+}
+
+.calculator {
+    /* Main calculator structure already defined by container */
+}
+
+.calculator-display {
+    background-color: #222; /* Very dark display background */
+    color: #fff;
+    font-size: 2.5em; /* Large font for display */
+    padding: 15px 20px;
+    text-align: right;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    height: 60px; /* Fixed height */
+    line-height: 60px; /* Vertically align text if needed */
+    overflow: hidden;
+    white-space: nowrap;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4-column grid */
+    gap: 10px; /* Space between buttons */
+}
+
+.button {
+    background-color: #505050; /* Dark gray for number buttons */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+}
+
+.button:hover {
+    background-color: #686868;
+}
+
+.button:active {
+    background-color: #7a7a7a;
+    transform: translateY(1px);
+}
+
+.button.function {
+    background-color: #a0a0a0; /* Lighter gray for function buttons */
+    color: #333;
+}
+.button.function:hover { background-color: #b8b8b8; }
+.button.function:active { background-color: #cccccc; }
+
+
+.button.operator {
+    background-color: #f0ad4e; /* Orange for operators */
+    color: white;
+}
+.button.operator:hover { background-color: #ec971f; }
+.button.operator:active { background-color: #d58512; }
+
+.button.operator.equals { /* Specific style for equals */
+    background-color: #5cb85c; /* Green for equals */
+    grid-column: span 1; /* Default, but can be overridden */
+}
+.button.operator.equals:hover { background-color: #4cae4c; }
+.button.operator.equals:active { background-color: #449d44; }
+
+
+.button.zero {
+    grid-column: span 2; /* Make '0' button wider */
+}
+
+.calculator-container footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+.calculator-container footer a {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+.calculator-container footer a:hover {
+    text-decoration: underline;
+}
