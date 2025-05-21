@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Pretty Printer</title>
+    <link rel="stylesheet" href="json_style.css"> <!-- Or json_pretty_printer_style.css -->
+</head>
+<body>
+    <div class="json-printer-container">
+        <header>
+            <h1>JSON Pretty Printer</h1>
+            <p>JSON 문자열을 입력하면 보기 쉽게 정렬하여 보여줍니다.</p>
+        </header>
+        <main class="json-printer">
+            <div class="input-output-section">
+                <div class="input-area">
+                    <label for="json-input">JSON 입력:</label>
+                    <textarea id="json-input" rows="10" placeholder="ここにJSON文字列を入力してください..."></textarea>
+                </div>
+                <div class="output-area">
+                    <label for="json-output">정렬된 JSON 출력:</label>
+                    <pre id="json-output-container"><code id="json-output"></code></pre>
+                </div>
+            </div>
+            <div class="controls">
+                <button id="prettify-button">JSON 정렬</button>
+                <button id="copy-button" style="display:none;">클립보드에 복사</button>
+            </div>
+            <div id="error-message" class="error-message" style="color:red; margin-top:10px;"></div>
+        </main>
+        <footer>
+            <p><a href="../../index.html">포털 홈으로 돌아가기</a></p>
+        </footer>
+    </div>
+    <script src="json_script.js"></script> <!-- Or json_pretty_printer_script.js -->
+</body>
+</html>

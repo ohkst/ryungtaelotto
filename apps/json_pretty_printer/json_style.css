@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f8f9fa; /* A very light gray, almost white */
+    color: #212529; /* Darker text for better readability */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+.json-printer-container {
+    width: 90%;
+    max-width: 900px; /* Allow more width for side-by-side view if desired */
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.075);
+    padding: 25px 30px;
+}
+
+.json-printer-container header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 15px;
+}
+
+.json-printer-container header h1 {
+    font-size: 2.2em;
+    color: #343a40;
+    margin-bottom: 5px;
+}
+
+.json-printer-container header p {
+    font-size: 1em;
+    color: #6c757d;
+}
+
+.input-output-section {
+    display: flex;
+    flex-wrap: wrap; /* Allow stacking on smaller screens */
+    gap: 20px; /* Space between input and output areas */
+    margin-bottom: 20px;
+}
+
+.input-area, .output-area {
+    flex: 1; /* Each takes half the space */
+    min-width: 300px; /* Minimum width before stacking */
+    display: flex;
+    flex-direction: column;
+}
+
+.input-area label, .output-area label {
+    font-size: 1.1em;
+    color: #495057;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#json-input {
+    width: 100%;
+    min-height: 200px; /* Decent initial height */
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: monospace; /* Monospace font for JSON */
+    font-size: 0.95em;
+    box-sizing: border-box;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+#json-output-container {
+    width: 100%;
+    min-height: 200px; /* Match input area height */
+    background-color: #e9ecef; /* Light background for output */
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    overflow-x: auto; /* Allow horizontal scrolling for long lines */
+    box-sizing: border-box;
+}
+
+#json-output { /* The <code> tag */
+    font-family: monospace; /* Monospace font for JSON */
+    font-size: 0.95em;
+    white-space: pre; /* Preserve whitespace from stringify */
+    color: #212529;
+}
+
+.controls {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+.controls button:hover {
+    background-color: #0056b3;
+}
+
+.controls button#copy-button {
+    background-color: #28a745; /* Green for copy */
+}
+.controls button#copy-button:hover {
+    background-color: #1e7e34;
+}
+
+
+.error-message {
+    font-size: 1em;
+    color: #dc3545; /* Bootstrap danger color */
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 15px;
+    text-align: left;
+}
+/* Hide error message if it's empty or not actively showing an error */
+.error-message:empty {
+    display: none;
+}
+
+
+.json-printer-container footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+    font-size: 0.9em;
+}
+.json-printer-container footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+.json-printer-container footer a:hover {
+    text-decoration: underline;
+}
