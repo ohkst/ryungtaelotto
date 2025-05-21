@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4; /* Light gray page background */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for potentially taller content */
+    min-height: 100vh;
+    padding-top: 20px; /* Add some space at the top */
+}
+
+.qr-generator-container {
+    width: 90%;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 25px 30px;
+    text-align: center;
+}
+
+.qr-generator-container header {
+    margin-bottom: 25px;
+}
+
+.qr-generator-container header h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.qr-generator-container header p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.input-section {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-section label {
+    font-size: 1em;
+    color: #444;
+    text-align: left;
+    margin-bottom: -5px; /* Slightly closer to input */
+}
+
+#qr-url-input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%; /* Full width of its container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+#generate-qr-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#generate-qr-button:hover {
+    background-color: #0056b3;
+}
+
+#qrcode-display-wrapper {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px dashed #ddd;
+    border-radius: 4px;
+    min-height: 150px; /* Minimum height for the QR code area */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#qrcode-placeholder-text {
+    color: #888;
+    font-size: 1em;
+}
+
+#qrcode-display canvas,
+#qrcode-display img {
+    max-width: 100%; /* Ensure QR code is responsive within its container */
+    height: auto;
+    border: 1px solid #eee; /* Slight border around the QR code itself */
+}
+
+#download-qr-button {
+    background-color: #28a745; /* Green for download */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+#download-qr-button:hover {
+    background-color: #1e7e34;
+}
+#download-qr-button[style*="display:none"] { /* Ensure it's truly not taking space if hidden by style attribute */
+    display: none !important;
+}
+
+
+.qr-generator-container footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+}
+.qr-generator-container footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+.qr-generator-container footer a:hover {
+    text-decoration: underline;
+}

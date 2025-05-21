@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR 코드 생성기</title>
+    <link rel="stylesheet" href="qrcode_style.css">
+</head>
+<body>
+    <div class="qr-generator-container">
+        <header>
+            <h1>QR 코드 생성기</h1>
+            <p>웹페이지 주소(URL)를 입력하고 QR 코드를 생성하세요.</p>
+        </header>
+        <main class="qr-generator">
+            <div class="input-section">
+                <label for="qr-url-input">URL 입력:</label>
+                <input type="url" id="qr-url-input" placeholder="https://example.com">
+                <button id="generate-qr-button">QR 코드 생성</button>
+            </div>
+            <div id="qrcode-display-wrapper">
+                <p id="qrcode-placeholder-text">QR 코드가 여기에 표시됩니다.</p>
+                <div id="qrcode-display">
+                    <!-- QR Code will be appended here as an img or canvas -->
+                </div>
+                <button id="download-qr-button" style="display:none;">QR 코드 다운로드</button>
+            </div>
+        </main>
+        <footer>
+            <p><a href="../../index.html">포털 홈으로 돌아가기</a></p>
+        </footer>
+    </div>
+    <!-- The qrcode.js library might be included here by the worker if it chooses to use it from a CDN -->
+    <!-- e.g. <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script> -->
+    <script src="qrcode_script.js"></script>
+</body>
+</html>
