@@ -1,0 +1,131 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f7f6; /* Light, slightly greenish-gray background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top */
+    min-height: 100vh;
+    padding: 20px 0; /* Padding top and bottom for the body */
+}
+
+.date-calculator-container {
+    width: 90%;
+    max-width: 600px;
+    background-color: #fff;
+    border: 1px solid #d1d9e6; /* Softer border */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    padding: 25px 30px;
+}
+
+.date-calculator-container header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e1e8ed;
+    padding-bottom: 15px;
+}
+
+.date-calculator-container header h1 {
+    font-size: 2em;
+    color: #2c3e50; /* Dark blue-gray */
+    margin: 0;
+}
+
+.calculator-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #e1e8ed;
+    border-radius: 6px;
+    background-color: #fdfdfd; /* Slightly off-white for sections */
+}
+
+.calculator-section h2 {
+    font-size: 1.4em;
+    color: #34495e; /* Another dark blue-gray */
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eaecee;
+    padding-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; /* Stack label and input */
+}
+
+.input-group label {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.input-group input[type="date"],
+.input-group input[type="number"],
+.input-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-group input[type="number"] {
+    width: auto; /* Allow number input to be smaller */
+    min-width: 100px;
+    max-width: 150px;
+}
+
+
+.calculator-section button {
+    background-color: #007bff; /* Primary blue */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: block; /* Make button take full width of its container if needed, or center it */
+    margin-top: 10px; /* Space above button */
+}
+
+.calculator-section button:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+.result-text {
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #28a745; /* Green for results */
+    background-color: #e6f7f0;
+    padding: 10px;
+    border-radius: 4px;
+    min-height: 1.5em; /* Ensure it has some height even when empty */
+}
+.result-text:empty {
+    padding: 0; /* No padding if empty */
+    border: none;
+    background-color: transparent;
+}
+
+
+.date-calculator-container footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e1e8ed;
+    font-size: 0.9em;
+}
+.date-calculator-container footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+.date-calculator-container footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>날짜 계산기 (만나이 포함)</title>
+    <link rel="stylesheet" href="date_calculator_style.css">
+</head>
+<body>
+    <div class="date-calculator-container">
+        <header>
+            <h1>날짜 계산기</h1>
+        </header>
+
+        <section class="calculator-section" id="offset-section">
+            <h2>특정 날짜 기준 며칠 후/전 계산</h2>
+            <div class="input-group">
+                <label for="ref-date">기준 날짜:</label>
+                <input type="date" id="ref-date">
+            </div>
+            <div class="input-group">
+                <label for="days-offset">일 수:</label>
+                <input type="number" id="days-offset" value="1" min="0">
+            </div>
+            <div class="input-group">
+                <label for="offset-direction">방향:</label>
+                <select id="offset-direction">
+                    <option value="after" selected>후</option>
+                    <option value="before">전</option>
+                </select>
+            </div>
+            <button id="calc-offset-button">계산하기</button>
+            <p id="offset-result-date" class="result-text"></p>
+        </section>
+
+        <section class="calculator-section" id="difference-section">
+            <h2>두 날짜 간 차이 계산</h2>
+            <div class="input-group">
+                <label for="start-date">시작 날짜:</label>
+                <input type="date" id="start-date">
+            </div>
+            <div class="input-group">
+                <label for="end-date">종료 날짜:</label>
+                <input type="date" id="end-date">
+            </div>
+            <button id="calc-diff-button">계산하기</button>
+            <p id="diff-result-days" class="result-text"></p>
+        </section>
+
+        <section class="calculator-section" id="age-section">
+            <h2>만나이 계산</h2>
+            <div class="input-group">
+                <label for="birth-date">생년월일:</label>
+                <input type="date" id="birth-date">
+            </div>
+            <div class="input-group">
+                <label for="age-calc-date">계산 기준일 (기본: 오늘):</label>
+                <input type="date" id="age-calc-date">
+            </div>
+            <button id="calc-age-button">계산하기</button>
+            <p id="age-result" class="result-text"></p>
+        </section>
+        
+        <footer>
+            <p><a href="../../index.html">포털 홈으로 돌아가기</a></p>
+        </footer>
+    </div>
+    <script src="date_calculator_script.js"></script>
+</body>
+</html>
