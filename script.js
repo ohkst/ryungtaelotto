@@ -1,5 +1,135 @@
 document.addEventListener('DOMContentLoaded', () => {
     // A. Initial Setup and State Variables
+    // (Keep existing DOM element selections here)
+
+    // NEW: Constants for Lotto Number Generation Strategies
+    const ALL_NUMBERS_POOL = Object.freeze(Array.from({ length: 45 }, (_, i) => i + 1));
+    // maxLottoNumber is already defined below (will keep that one for now)
+    // lottoNumbersPerSet is already defined below (will keep that one, equivalent to NUMBERS_PER_SET)
+    const NUMBERS_PER_SET = 6; // Explicitly adding for clarity with new functions
+    const MAX_GENERATION_ATTEMPTS = 1000; // Safety break for complex strategies
+
+
+    // NEW: Helper Functions for Lotto Generation
+    function shuffleArray(array) {
+       let newArray = [...array];
+       for (let i = newArray.length - 1; i > 0; i--) {
+           const j = Math.floor(Math.random() * (i + 1));
+           [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+       }
+       return newArray;
+    }
+
+    function isPrime(num) {
+       if (num <= 1) return false;
+       if (num <= 3) return true;
+       if (num % 2 === 0 || num % 3 === 0) return false;
+       for (let i = 5; i * i <= num; i = i + 6) {
+           if (num % i === 0 || num % (i + 2) === 0) return false;
+       }
+       return true;
+    }
+
+    // RENAMED/EXTRACTED: Original random generator
+    function generateCompletelyRandom() {
+       const numbers = new Set();
+       while (numbers.size < NUMBERS_PER_SET) { // Using new const
+           const randomNumber = Math.floor(Math.random() * maxLottoNumber) + 1; // maxLottoNumber is existing global
+           numbers.add(randomNumber);
+       }
+       return Array.from(numbers).sort((a, b) => a - b);
+    }
+
+    // NEW: Strategy Functions
+    function generateEvenOdd33() {
+       let attempts = 0;
+       while (attempts < MAX_GENERATION_ATTEMPTS) {
+           const shuffled = shuffleArray(ALL_NUMBERS_POOL);
+           const evens = shuffled.filter(n => n % 2 === 0);
+           const odds = shuffled.filter(n => n % 2 !== 0);
+           if (evens.length >= 3 && odds.length >= 3) {
+               const selectedNumbers = evens.slice(0, 3).concat(odds.slice(0, 3));
+               if (new Set(selectedNumbers).size === NUMBERS_PER_SET) {
+                    return selectedNumbers.sort((a, b) => a - b);
+               }
+           }
+           attempts++;
+       }
+       console.warn("generateEvenOdd33: Max attempts reached, falling back to random.");
+       return generateCompletelyRandom(); // Fallback
+    }
+
+    function generateSequentialIncluded() {
+       let attempts = 0;
+       while (attempts < MAX_GENERATION_ATTEMPTS) {
+           const numbers = new Set();
+           const firstNum = Math.floor(Math.random() * (maxLottoNumber - 1)) + 1; // Ensure space for a pair
+           numbers.add(firstNum);
+           numbers.add(firstNum + 1);
+
+           while (numbers.size < NUMBERS_PER_SET) {
+               const randomNumber = Math.floor(Math.random() * maxLottoNumber) + 1;
+               numbers.add(randomNumber);
+           }
+           if (numbers.size === NUMBERS_PER_SET) { 
+                let hasSequential = false;
+                const sortedArr = Array.from(numbers).sort((a,b) => a-b);
+                for(let i=0; i < sortedArr.length -1; i++) {
+                    if(sortedArr[i+1] - sortedArr[i] === 1) {
+                        hasSequential = true;
+                        break;
+                    }
+                }
+                if (hasSequential) return sortedArr;
+           }
+           attempts++;
+       }
+       console.warn("generateSequentialIncluded: Max attempts reached, falling back to random.");
+       return generateCompletelyRandom();
+    }
+   
+    function generatePrimeCombination(minPrimes = 2) {
+        let attempts = 0;
+        while (attempts < MAX_GENERATION_ATTEMPTS) {
+            const shuffled = shuffleArray(ALL_NUMBERS_POOL);
+            const primes = shuffled.filter(isPrime);
+            const nonPrimes = shuffled.filter(n => !isPrime(n));
+
+            if (primes.length >= minPrimes && nonPrimes.length >= (NUMBERS_PER_SET - minPrimes)) {
+                const selectedNumbers = primes.slice(0, minPrimes).concat(nonPrimes.slice(0, NUMBERS_PER_SET - minPrimes));
+                 if (new Set(selectedNumbers).size === NUMBERS_PER_SET) {
+                    return selectedNumbers.sort((a, b) => a - b);
+                }
+            }
+            attempts++;
+        }
+        console.warn(`generatePrimeCombination (min ${minPrimes}): Max attempts reached, falling back to random.`);
+        return generateCompletelyRandom();
+    }
+
+    function generateLastDigitDistributed() {
+       console.warn("generateLastDigitDistributed: Not fully implemented, using random.");
+       return generateCompletelyRandom();
+    }
+
+    function generateRangeBalanced() {
+       console.warn("generateRangeBalanced: Not fully implemented, using random.");
+       return generateCompletelyRandom();
+    }
+
+    function generateFixedInterval() {
+       console.warn("generateFixedInterval: Not fully implemented, using random.");
+       return generateCompletelyRandom();
+    }
+   
+    function generateRangeIntervalDistributed() {
+       console.warn("generateRangeIntervalDistributed: Not fully implemented or similar to RangeBalanced, using random.");
+       return generateCompletelyRandom();
+    }
+
+    // End of NEW strategy functions and helpers
+
+    // A. Initial Setup and State Variables (Existing DOM selections continue here)
     const balanceAmountEl = document.getElementById('balance-amount');
     const betOptionButtons = document.querySelectorAll('.bet-option');
     const lastWinAmountEl = document.getElementById('last-win-amount');
@@ -8,13 +138,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyListEl = document.getElementById('history-list');
     const jackpotMessageAreaEl = document.getElementById('jackpot-message-area');
     const generateButton = document.getElementById('generate-button');
+    // NEW: Add strategy dropdown element
+    const strategySelectEl = document.getElementById('lotto-strategy-select');
+
 
     let balance = 1000;
     let currentBet = 10; // Default bet
     let soundEnabled = true;
     let history = [];
-    const lottoNumbersPerSet = 6;
-    const maxLottoNumber = 45;
+    const lottoNumbersPerSet = 6; // This is equivalent to NUMBERS_PER_SET, can be harmonized later if needed
+    const maxLottoNumber = 45;   // This is equivalent to MAX_LOTTO_NUMBER
     const historyLimit = 5;
 
     // B. Sound Effects Logic
@@ -124,16 +257,49 @@ document.addEventListener('DOMContentLoaded', () => {
         updateBalanceDisplay();
         generateButton.disabled = true; // Prevent multiple clicks during animation
 
-        const generatedNumbers = [];
-        const numberSet = new Set();
-        while (numberSet.size < lottoNumbersPerSet) {
-            const randomNumber = Math.floor(Math.random() * maxLottoNumber) + 1;
-            numberSet.add(randomNumber);
+        // Integrate selected strategy
+        const selectedStrategy = strategySelectEl.value;
+        let generatedNumbers = [];
+
+        switch (selectedStrategy) {
+            case 'evenOdd33':
+                generatedNumbers = generateEvenOdd33();
+                break;
+            case 'sequentialIncluded':
+                generatedNumbers = generateSequentialIncluded();
+                break;
+            case 'primeCombination':
+                generatedNumbers = generatePrimeCombination();
+                break;
+            case 'lastDigitDistributed':
+                generatedNumbers = generateLastDigitDistributed();
+                break;
+            case 'rangeBalanced':
+                generatedNumbers = generateRangeBalanced();
+                break;
+            case 'fixedInterval':
+                generatedNumbers = generateFixedInterval();
+                break;
+            case 'rangeIntervalDistributed':
+                generatedNumbers = generateRangeIntervalDistributed();
+                break;
+            case 'random': // Fallthrough default
+            default:
+                generatedNumbers = generateCompletelyRandom();
+                break;
         }
-        generatedNumbers.push(...Array.from(numberSet).sort((a,b) => a - b));
+        
+        // Ensure generatedNumbers is always an array of the correct size,
+        // as fallback strategies should handle this.
+        // Additional safety, though strategies should guarantee this:
+        if (!generatedNumbers || generatedNumbers.length !== NUMBERS_PER_SET) {
+            console.error("Strategy failed to return valid numbers, using fallback random.");
+            generatedNumbers = generateCompletelyRandom();
+        }
+
 
         const animationPromises = [];
-        for (let i = 0; i < lottoNumbersPerSet; i++) {
+        for (let i = 0; i < NUMBERS_PER_SET; i++) { // Use NUMBERS_PER_SET
             animationPromises.push(animateSlot(lottoSlotElements[i], generatedNumbers[i], i * 300)); // Staggered delay
         }
         

@@ -32,6 +32,20 @@
             </div>
         </div>
 
+        <div class="strategy-selection-section">
+            <label for="lotto-strategy-select">번호 생성 전략 선택:</label>
+            <select id="lotto-strategy-select">
+                <option value="random" selected>완전 랜덤 조합</option>
+                <option value="evenOdd33">홀짝 3:3 조합</option>
+                <option value="lastDigitDistributed">끝자리 분산 조합</option>
+                <option value="sequentialIncluded">연번 포함 조합</option>
+                <option value="rangeBalanced">번호대 균형 조합</option>
+                <option value="fixedInterval">간격 일정 조합</option>
+                <option value="primeCombination">소수 번호 조합</option>
+                <option value="rangeIntervalDistributed">번호대 구간별 분산</option>
+            </select>
+        </div>
+
         <main class="lotto-main">
             <div id="jackpot-message-area" class="jackpot-message" aria-live="polite">
                 <!-- Jackpot messages will appear here -->

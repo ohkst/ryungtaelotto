@@ -271,3 +271,43 @@ body {
     .bet-controls { flex-wrap: wrap; justify-content: center; }
     .bet-controls button.bet-option { padding: 6px 10px; font-size: 0.9em; }
 }
+
+/* Styles for Lotto Strategy Selection UI */
+.strategy-selection-section {
+    background-color: rgba(0,0,0,0.2); /* Similar to history section */
+    padding: 15px 20px;
+    margin-bottom: 20px; /* Space before lotto display */
+    border-radius: 8px;
+    border: 1px solid var(--casino-gold);
+    text-align: center; /* Center label and select */
+}
+
+.strategy-selection-section label {
+    font-family: var(--font-body);
+    font-weight: bold;
+    color: var(--casino-gold);
+    font-size: 1.1em;
+    margin-right: 10px;
+    text-shadow: 1px 1px 1px var(--casino-black);
+}
+
+#lotto-strategy-select {
+    font-family: var(--font-body);
+    background-color: var(--casino-black);
+    color: var(--casino-light-text);
+    border: 2px solid var(--casino-gold);
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 1em;
+    min-width: 250px; /* Give it some decent width */
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+
+#lotto-strategy-select:focus {
+    outline: none;
+    border-color: var(--casino-red);
+    box-shadow: 0 0 10px var(--casino-red), inset 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Styling for the dropdown arrow might be browser-dependent and harder to customize fully with pure CSS,
+   but basic background/border/color should apply. */
