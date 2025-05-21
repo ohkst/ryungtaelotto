@@ -1,201 +1,273 @@
-@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Mate+SC&family=Sorts+Mill+Goudy:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Limelight&family=Roboto:wght@400;700;900&display=swap');
+
+:root {
+    --casino-red: #c0392b; /* Strong red */
+    --casino-black: #1a1a1a; /* Deep black */
+    --casino-gold: #ffd700; /* Bright gold */
+    --casino-green: #27ae60; /* Card table green */
+    --casino-light-text: #f5f5f5;
+    --casino-dark-text: #333333;
+    --font-display: 'Limelight', cursive; /* For headings, marquee style */
+    --font-body: 'Roboto', sans-serif;
+}
 
 body {
-    font-family: 'Sorts Mill Goudy', serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: var(--font-body);
+    background-color: var(--casino-black);
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                      radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 30px 30px, 30px 30px; /* Subtle dot pattern */
+    background-position: 0 0, 15px 15px;
+    color: var(--casino-light-text);
     margin: 0;
-    background: 
-        radial-gradient(ellipse at bottom, rgba(76, 0, 130, 0.6) 0%, transparent 70%), /* Deep purple glow from bottom */
-        linear-gradient(to top, #0a0f1a 0%, #1c253c 70%, #3a4a6a 100%); /* Night sky gradient */
-    color: #e0e0e0; /* Soft off-white for text */
-    text-align: center;
-    padding: 20px;
-    overflow-x: hidden; /* Prevent horizontal scroll from decorative elements */
-}
-
-.container {
-    position: relative; /* For pseudo-elements */
-    background-color: rgba(28, 37, 60, 0.85); /* Dark, slightly transparent base */
-    padding: 50px 60px; /* More padding */
-    border-radius: 15px; /* Base rounding */
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3), inset 0 0 10px rgba(0,0,0,0.5); /* Gold glow and inner shadow */
-    border: 2px solid #b8860b; /* DarkGoldenRod border */
-    width: 90%;
-    max-width: 700px; /* Max width for the container */
-}
-
-/* Art Nouveau inspired flourishes - simplified */
-.container::before, .container::after {
-    content: '';
-    position: absolute;
-    width: 100px; /* Adjust size of flourish */
-    height: 100px; /* Adjust size of flourish */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,0 C10,20 10,80 50,100 C90,80 90,20 50,0 Z M50,10 C80,30 80,70 50,90 C20,70 20,30 50,10 Z' fill='%23b8860b' opacity='0.6'/%3E%3C/svg%3E"); /* Simple SVG flourish, gold color */
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.7;
-    z-index: -1; /* Behind container content */
-}
-
-.container::before {
-    top: -30px;
-    left: -30px;
-    transform: rotate(-45deg);
-}
-
-.container::after {
-    bottom: -30px;
-    right: -30px;
-    transform: rotate(135deg);
-}
-
-
-h1 {
-    font-family: 'IM Fell English SC', serif; /* More decorative font for heading */
-    color: #ffd700; /* Gold */
-    margin-bottom: 40px;
-    font-size: 2.8em; /* Larger heading */
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.5), 0 0 10px #ffd700; /* Richer shadow and glow */
-    letter-spacing: 1.5px;
-}
-
-#lotto-numbers {
+    padding: 0;
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
     justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-    min-height: 80px; 
+    align-items: flex-start; /* Align to top for scrollable content */
+    min-height: 100vh;
+    line-height: 1.6;
 }
 
-.lotto-number {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px; 
-    height: 70px; 
-    margin: 10px; 
-    border-radius: 50%; /* Keep circular for gem-like feel */
-    color: #ffffff;
-    font-size: 28px; 
-    font-weight: bold;
-    font-family: 'Mate SC', serif; /* Slightly decorative but clear number font */
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-    position: relative; /* For pseudo-element sparkle */
-    transform: scale(0);
-    animation: magicalAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    /* Dynamic background for numbers - example with 3 colors */
-    background: radial-gradient(circle, #777, #555); /* Default fallback */
-    box-shadow: 0 0 10px #888, inset 0 0 8px rgba(255,255,255,0.2), 0 0 3px black;
+.casino-container {
+    background-color: #2c2c2c; /* Dark grey, less harsh than pure black */
+    border: 5px solid var(--casino-gold);
+    border-radius: 15px;
+    box-shadow: 0 0 30px var(--casino-gold), 0 0 60px rgba(255, 215, 0, 0.5); /* Strong gold glow */
+    margin: 20px;
+    padding: 20px 30px;
+    width: 95%;
+    max-width: 900px; /* Wider for more elements */
+    text-align: center;
 }
 
-/* Specific Gem Style Classes */
-.gem-ruby    { background: radial-gradient(circle, #ff5252, #c51162); box-shadow: 0 0 15px #ff5252, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.gem-sapphire{ background: radial-gradient(circle, #448aff, #2962ff); box-shadow: 0 0 15px #448aff, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.gem-emerald { background: radial-gradient(circle, #00e676, #00c853); box-shadow: 0 0 15px #00e676, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.gem-topaz   { background: radial-gradient(circle, #ffc400, #ffab00); box-shadow: 0 0 15px #ffc400, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.gem-amethyst{ background: radial-gradient(circle, #e040fb, #d500f9); box-shadow: 0 0 15px #e040fb, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.gem-diamond { background: radial-gradient(circle, #f8f8f8, #bdbdbd); box-shadow: 0 0 15px #f8f8f8, inset 0 0 10px rgba(0,0,0,0.3), 0 0 5px black; color: #333; }
-
-/* Assign different 'gem' colors - can be expanded or randomized with JS */
-/*
-.lotto-number:nth-child(6n+1) { background: radial-gradient(circle, #ff5252, #c51162); /* Ruby */ box-shadow: 0 0 15px #ff5252, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.lotto-number:nth-child(6n+2) { background: radial-gradient(circle, #448aff, #2962ff); /* Sapphire */ box-shadow: 0 0 15px #448aff, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.lotto-number:nth-child(6n+3) { background: radial-gradient(circle, #00e676, #00c853); /* Emerald */ box-shadow: 0 0 15px #00e676, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.lotto-number:nth-child(6n+4) { background: radial-gradient(circle, #ffc400, #ffab00); /* Topaz/Gold */ box-shadow: 0 0 15px #ffc400, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.lotto-number:nth-child(6n+5) { background: radial-gradient(circle, #e040fb, #d500f9); /* Amethyst */ box-shadow: 0 0 15px #e040fb, inset 0 0 10px rgba(255,255,255,0.3), 0 0 5px black; }
-.lotto-number:nth-child(6n+6) { background: radial-gradient(circle, #f8f8f8, #bdbdbd); /* Diamond/Pearl */ box-shadow: 0 0 15px #f8f8f8, inset 0 0 10px rgba(0,0,0,0.3), 0 0 5px black; color: #333; }
-*/
-
-/* Stagger animation for each number */
-.lotto-number:nth-child(1) { animation-delay: 0.2s; }
-.lotto-number:nth-child(2) { animation-delay: 0.4s; }
-.lotto-number:nth-child(3) { animation-delay: 0.6s; }
-.lotto-number:nth-child(4) { animation-delay: 0.8s; }
-.lotto-number:nth-child(5) { animation-delay: 1.0s; }
-.lotto-number:nth-child(6) { animation-delay: 1.2s; }
-
-@keyframes magicalAppear {
-    0% { transform: scale(0) rotate(-180deg); opacity: 0; }
-    70% { transform: scale(1.2) rotate(10deg); opacity: 0.8; }
-    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+.casino-header {
+    padding-bottom: 15px;
+    border-bottom: 2px dashed var(--casino-gold);
+    margin-bottom: 20px;
+    position: relative;
 }
 
-#generate-button {
-    font-family: 'IM Fell English SC', serif;
-    background: linear-gradient(145deg, #DAA520, #B8860B); /* Gold gradient */
-    color: #1c253c; /* Dark blue text, like engraving */
-    font-weight: bold;
-    border: 2px solid #C09000; /* Slightly lighter gold border */
-    padding: 18px 35px; 
-    font-size: 1.5em;
-    border-radius: 50px; /* Pill shape, can be more complex with pseudo-elements */
+.casino-header h1 {
+    font-family: var(--font-display);
+    color: var(--casino-gold);
+    font-size: 3.5em;
+    text-shadow: 3px 3px 0px var(--casino-red), 5px 5px 10px rgba(0,0,0,0.7);
+    margin: 10px 0;
+    letter-spacing: 2px;
+}
+
+#sound-toggle-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--casino-gold);
+    color: var(--casino-black);
+    border: 2px solid var(--casino-black);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0px 5px 15px rgba(218, 165, 32, 0.4), inset 0px -2px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px var(--casino-gold);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+#sound-toggle-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--casino-gold), 0 0 20px var(--casino-red);
+}
+
+.balance-bet-section {
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--casino-gold);
+}
+
+.balance-display, .win-display {
+    font-size: 1.2em;
+    color: var(--casino-light-text);
+}
+.balance-display span, .win-display span {
+    color: var(--casino-gold);
+    font-weight: bold;
+}
+
+.bet-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.bet-controls button.bet-option {
+    background-color: var(--casino-green);
+    color: var(--casino-light-text);
+    border: 2px solid var(--casino-gold);
+    border-radius: 20px; /* Chip like */
+    padding: 8px 15px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background-color 0.2s, transform 0.2s;
+}
+.bet-controls button.bet-option:hover {
+    background-color: #2ecc71; /* Lighter green */
+    transform: scale(1.05);
+}
+.bet-controls button.bet-option[aria-pressed="true"] {
+    background-color: var(--casino-red);
+    box-shadow: 0 0 10px var(--casino-red), inset 0 0 5px rgba(0,0,0,0.5);
+    transform: scale(1.1);
+}
+
+#jackpot-message-area {
+    font-family: var(--font-display);
+    font-size: 2.5em;
+    color: var(--casino-red);
+    text-shadow: 0 0 10px var(--casino-red), 0 0 20px var(--casino-gold);
+    min-height: 50px; /* Reserve space */
+    margin-bottom: 15px;
+    visibility: hidden; /* Initially hidden */
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+#jackpot-message-area.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+.lotto-numbers-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Space between slots */
+    padding: 20px;
+    background-color: var(--casino-black);
+    border: 3px inset var(--casino-gold);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    min-height: 100px; /* Height for slots */
+}
+
+.lotto-slot {
+    width: 80px; /* Wider for slot feel */
+    height: 100px;
+    background-color: #333;
+    border: 2px solid #444;
+    border-radius: 8px;
+    color: var(--casino-gold);
+    font-size: 3em;
+    font-weight: 900; /* Very bold numbers */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* For spinning effect */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    position: relative; /* For number reel */
+}
+/* Individual number reel inside the slot for animation */
+.lotto-slot .reel {
+    position: absolute;
+    top: 0; /* Will be animated */
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.lotto-slot .reel span { /* Individual numbers in the reel */
+    display: block;
+    height: 100px; /* Match slot height */
+    line-height: 100px; /* Vertically center */
+}
+
+
+#generate-button.casino-button {
+    font-family: var(--font-display);
+    background: linear-gradient(145deg, var(--casino-red), #a02d1f);
+    color: var(--casino-gold);
+    border: 3px outset var(--casino-gold);
+    border-radius: 15px;
+    padding: 15px 40px;
+    font-size: 2em;
+    cursor: pointer;
+    text-shadow: 2px 2px 3px var(--casino-black);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4), 0 0 10px var(--casino-red);
+    transition: all 0.2s ease-in-out;
     letter-spacing: 1px;
-    text-transform: uppercase;
+}
+#generate-button.casino-button:hover {
+    background: linear-gradient(145deg, #e74c3c, var(--casino-red));
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 20px var(--casino-red), 0 0 30px var(--casino-gold);
+    transform: translateY(-3px) scale(1.03);
+}
+#generate-button.casino-button:active {
+    transform: translateY(0px) scale(1);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
 }
 
-#generate-button:hover {
-    background: linear-gradient(145deg, #FFD700, #DAA520); /* Lighter gold on hover */
-    box-shadow: 0px 8px 20px rgba(255, 215, 0, 0.5), inset 0px -2px 3px rgba(0,0,0,0.2);
-    transform: translateY(-3px);
-    color: #111827;
+.history-section {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    border: 1px solid var(--casino-gold);
+}
+.history-section h2 {
+    font-family: var(--font-display);
+    color: var(--casino-gold);
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 0px var(--casino-red);
+}
+#history-list {
+    list-style: none;
+    padding: 0;
+    max-height: 150px; /* Scrollable history */
+    overflow-y: auto;
+}
+#history-list li {
+    background-color: rgba(255,255,255,0.05);
+    padding: 8px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-size: 1.1em;
+    color: var(--casino-light-text);
+    border-left: 3px solid var(--casino-red);
+}
+#history-list li:nth-child(odd) {
+    background-color: rgba(255,255,255,0.08);
 }
 
-#generate-button:active {
-    transform: translateY(0px);
-    box-shadow: 0px 3px 10px rgba(218, 165, 32, 0.4), inset 0px -1px 2px rgba(0,0,0,0.3);
+
+.casino-footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid var(--casino-gold);
+    font-size: 0.9em;
+    color: #aaa;
 }
 
-/* Responsive adjustments */
+/* Basic Responsive */
 @media (max-width: 768px) {
-    .container {
-        padding: 40px 30px;
-        width: 95%;
-    }
-    h1 {
-        font-size: 2.2em;
-    }
-    .lotto-number {
-        width: 60px;
-        height: 60px;
-        font-size: 22px;
-        margin: 8px;
-    }
-    #generate-button {
-        padding: 15px 30px;
-        font-size: 1.3em;
-    }
+    .casino-header h1 { font-size: 2.5em; }
+    .lotto-slot { width: 60px; height: 80px; font-size: 2em; }
+    .lotto-slot .reel span { height: 80px; line-height: 80px; }
+    #generate-button.casino-button { font-size: 1.5em; padding: 12px 30px; }
+    .balance-bet-section { flex-direction: column; gap: 15px; }
 }
-
 @media (max-width: 480px) {
-    .container {
-        padding: 30px 20px;
-        border-width: 1px; /* Thinner border on small screens */
-    }
-    .container::before, .container::after { /* Hide flourishes on small screens if they cause layout issues */
-        display: none;
-    }
-    h1 {
-        font-size: 1.8em;
-        margin-bottom: 30px;
-    }
-    .lotto-number {
-        width: 45px;
-        height: 45px;
-        font-size: 18px;
-        margin: 5px;
-    }
-    #generate-button {
-        padding: 12px 25px;
-        font-size: 1.1em;
-    }
-    #lotto-numbers {
-        margin-bottom: 30px;
-    }
+    .casino-container { margin: 10px; padding: 15px; }
+    .casino-header h1 { font-size: 2em; }
+    #sound-toggle-button { width: 35px; height: 35px; font-size: 16px; top:10px; right:10px;}
+    .lotto-numbers-wrapper { flex-wrap: wrap; gap: 5px; padding:10px; }
+    .lotto-slot { width: 45px; height: 60px; font-size: 1.5em; margin-bottom:5px;}
+    .lotto-slot .reel span { height: 60px; line-height: 60px; }
+    #generate-button.casino-button { font-size: 1.2em; padding: 10px 20px; }
+    .bet-controls { flex-wrap: wrap; justify-content: center; }
+    .bet-controls button.bet-option { padding: 6px 10px; font-size: 0.9em; }
 }

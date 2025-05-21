@@ -3,16 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>실시간 로또 번호 생성기</title>
+    <title>행운의 로또 카지노</title> <!-- New Title -->
     <link rel="stylesheet" href="style.css">
+    <!-- Placeholder for a casino-themed font if available via CDN, e.g., Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>실시간 로또 번호 생성기</h1>
-        <div id="lotto-numbers">
-            <!-- 숫자가 여기에 표시됩니다 -->
+    <div class="casino-container">
+        <header class="casino-header">
+            <h1>행운의 로또 카지노</h1>
+            <button id="sound-toggle-button" aria-label="Sound On/Off">🔊</button> <!-- Sound Toggle -->
+        </header>
+
+        <div class="balance-bet-section">
+            <div class="balance-display">
+                잔액: <span id="balance-amount">$1000</span>
+            </div>
+            <div class="bet-controls">
+                베팅 금액:
+                <button class="bet-option" data-bet="1">$1</button>
+                <button class="bet-option" data-bet="5">$5</button>
+                <button class="bet-option" data-bet="10" aria-pressed="true">$10</button> <!-- Default selected bet -->
+                <button class="bet-option" data-bet="25">$25</button>
+                <button class="bet-option" data-bet="50">$50</button>
+            </div>
+            <div class="win-display">
+                지난 당첨금: <span id="last-win-amount">$0</span>
+            </div>
         </div>
-        <button id="generate-button">번호 생성</button>
+
+        <main class="lotto-main">
+            <div id="jackpot-message-area" class="jackpot-message" aria-live="polite">
+                <!-- Jackpot messages will appear here -->
+            </div>
+            <div id="lotto-numbers-display" class="lotto-numbers-wrapper">
+                <!-- Numbers will be displayed here, possibly with slot-like individual containers -->
+                <div class="lotto-slot">?</div>
+                <div class="lotto-slot">?</div>
+                <div class="lotto-slot">?</div>
+                <div class="lotto-slot">?</div>
+                <div class="lotto-slot">?</div>
+                <div class="lotto-slot">?</div>
+            </div>
+            <button id="generate-button" class="casino-button">번호 생성</button>
+        </main>
+
+        <aside class="history-section">
+            <h2>최근 당첨 번호</h2>
+            <ul id="history-list">
+                <!-- History items will be populated here by JS -->
+                <li>-</li> <!-- Placeholder -->
+            </ul>
+        </aside>
+
+        <footer class="casino-footer">
+            <p>실제 돈으로 하는 게임이 아닙니다. 재미로만 즐기세요!</p>
+        </footer>
     </div>
     <script src="script.js"></script>
 </body>
