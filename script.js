@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const lottoNumbersDiv = document.getElementById('lotto-numbers');
     const generateButton = document.getElementById('generate-button');
+    const gemStyles = ['gem-ruby', 'gem-sapphire', 'gem-emerald', 'gem-topaz', 'gem-amethyst', 'gem-diamond'];
 
     function generateLottoNumbers() {
         const numbers = new Set();
@@ -13,16 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function displayNumbers(numbers) {
         lottoNumbersDiv.innerHTML = ''; // Clear previous numbers
-        numbers.forEach(number => {
+        numbers.forEach((number, index) => { // Added index for animation delay
             const numberDiv = document.createElement('div');
             numberDiv.classList.add('lotto-number');
+            
+            // Randomly assign a gem style
+            const randomGemClass = gemStyles[Math.floor(Math.random() * gemStyles.length)];
+            numberDiv.classList.add(randomGemClass);
+            
             numberDiv.textContent = number;
-            // Optional: Add color classes based on number ranges
-            // if (number <= 10) numberDiv.classList.add('lotto-number-yellow');
-            // else if (number <= 20) numberDiv.classList.add('lotto-number-blue');
-            // else if (number <= 30) numberDiv.classList.add('lotto-number-red');
-            // else if (number <= 40) numberDiv.classList.add('lotto-number-gray');
-            // else numberDiv.classList.add('lotto-number-green'); // Default, though base is green
+            
+            // Apply animation delay based on index (improves upon pure CSS nth-child if numbers are rapidly regenerated)
+            // This ensures the stagger effect is consistent even if the number of .lotto-number elements changes.
+            numberDiv.style.animationDelay = `${index * 0.2}s`; 
+
             lottoNumbersDiv.appendChild(numberDiv);
         });
     }
