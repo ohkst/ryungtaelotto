@@ -1,0 +1,142 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f8f9fa; /* Light gray background */
+    color: #343a40; /* Dark gray text */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top */
+    min-height: 100vh;
+    padding: 20px 0; /* Padding top and bottom for the body */
+}
+
+.interest-calculator-container {
+    width: 90%;
+    max-width: 700px; /* Slightly wider for more content */
+    background-color: #ffffff;
+    border: 1px solid #dee2e6; /* Light border */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 25px 30px;
+}
+
+.interest-calculator-container header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 20px;
+}
+
+.interest-calculator-container header h1 {
+    font-size: 2em;
+    color: #007bff; /* Blue for header */
+    margin: 0;
+}
+
+.calculator-section {
+    margin-bottom: 35px;
+    padding: 25px;
+    border: 1px solid #e9ecef; /* Section border */
+    border-radius: 6px;
+    background-color: #fdfdfd; 
+}
+.calculator-section:last-of-type {
+    margin-bottom: 20px; /* Less margin for the last section */
+}
+
+
+.calculator-section h2 {
+    font-size: 1.5em;
+    color: #495057; /* Slightly lighter than body text */
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #ced4da;
+}
+
+.input-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column; 
+}
+
+.input-group label {
+    font-size: 1em;
+    color: #212529;
+    margin-bottom: 8px;
+    font-weight: 500; /* Slightly bolder labels */
+}
+
+.input-group input[type="number"],
+.input-group select {
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff; /* Ensure inputs are white */
+}
+/* For number inputs, allow them to be less wide if desired by context */
+.input-group input[type="number"] {
+     /* width: auto; /* Default to full width due to parent flex settings */
+}
+
+
+.calculator-section button {
+    background-color: #28a745; /* Green for calculate buttons */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 22px;
+    font-size: 1.05em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: inline-block; /* Allow button to size to content + padding */
+    margin-top: 10px; 
+}
+
+.calculator-section button:hover {
+    background-color: #218838; /* Darker green */
+}
+
+.result-text {
+    margin-top: 20px;
+    font-size: 1.15em;
+    font-weight: bold;
+    color: #17a2b8; /* Info blue for results */
+    background-color: #e7f7fa; /* Light blue background */
+    padding: 12px;
+    border-radius: 4px;
+    border-left: 4px solid #17a2b8;
+    min-height: 1.5em; 
+    line-height: 1.6;
+}
+.result-text:empty { /* Hide if empty */
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    min-height: 0;
+    margin-top: 0;
+}
+/* Multiple result paragraphs might appear, ensure spacing */
+.result-text + .result-text {
+    margin-top: 10px;
+}
+
+
+.interest-calculator-container footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+    font-size: 0.9em;
+}
+.interest-calculator-container footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+.interest-calculator-container footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이자 계산기</title>
+    <link rel="stylesheet" href="interest_calculator_style.css">
+</head>
+<body>
+    <div class="interest-calculator-container">
+        <header>
+            <h1>이자 계산기</h1>
+        </header>
+
+        <section class="calculator-section" id="simple-monthly-interest-section">
+            <h2>월 단리 이자 계산</h2>
+            <div class="input-group">
+                <label for="sm-principal">원금 (원):</label>
+                <input type="number" id="sm-principal" placeholder="예: 1000000">
+            </div>
+            <div class="input-group">
+                <label for="sm-annual-rate">연 이율 (%):</label>
+                <input type="number" id="sm-annual-rate" step="0.01" placeholder="예: 3.5">
+            </div>
+            <button id="calc-sm-button">월 이자 계산</button>
+            <p id="sm-monthly-interest-result" class="result-text"></p>
+        </section>
+
+        <section class="calculator-section" id="simple-interest-period-section">
+            <h2>기간별 단리 이자 계산</h2>
+            <div class="input-group">
+                <label for="si-principal">원금 (원):</label>
+                <input type="number" id="si-principal" placeholder="예: 1000000">
+            </div>
+            <div class="input-group">
+                <label for="si-annual-rate">연 이율 (%):</label>
+                <input type="number" id="si-annual-rate" step="0.01" placeholder="예: 3.5">
+            </div>
+            <div class="input-group">
+                <label for="si-time-period">기간:</label>
+                <input type="number" id="si-time-period" placeholder="예: 12">
+            </div>
+            <div class="input-group">
+                <label for="si-time-unit">기간 단위:</label>
+                <select id="si-time-unit">
+                    <option value="years">년</option>
+                    <option value="months" selected>개월</option>
+                </select>
+            </div>
+            <button id="calc-si-button">단리 총 이자 계산</button>
+            <p id="si-total-interest-result" class="result-text"></p>
+            <p id="si-total-amount-result" class="result-text"></p>
+        </section>
+
+        <section class="calculator-section" id="compound-interest-section">
+            <h2>복리 이자 계산</h2>
+            <div class="input-group">
+                <label for="ci-principal">원금 (원):</label>
+                <input type="number" id="ci-principal" placeholder="예: 1000000">
+            </div>
+            <div class="input-group">
+                <label for="ci-annual-rate">연 이율 (%):</label>
+                <input type="number" id="ci-annual-rate" step="0.01" placeholder="예: 3.5">
+            </div>
+            <div class="input-group">
+                <label for="ci-time-years">거치 기간 (년):</label>
+                <input type="number" id="ci-time-years" placeholder="예: 3">
+            </div>
+            <div class="input-group">
+                <label for="ci-compound-frequency">복리 계산 주기:</label>
+                <select id="ci-compound-frequency">
+                    <option value="1" selected>매년</option>
+                    <option value="2">6개월마다</option>
+                    <option value="4">분기별</option>
+                    <option value="12">매월</option>
+                    <option value="365">매일</option>
+                </select>
+            </div>
+            <button id="calc-ci-button">복리 총액 계산</button>
+            <p id="ci-total-amount-result" class="result-text"></p>
+            <p id="ci-total-interest-result" class="result-text"></p>
+        </section>
+        
+        <footer>
+            <p><a href="../../index.html">포털 홈으로 돌아가기</a></p>
+        </footer>
+    </div>
+    <script src="interest_calculator_script.js"></script>
+</body>
+</html>
