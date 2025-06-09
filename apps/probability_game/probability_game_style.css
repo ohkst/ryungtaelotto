@@ -1,0 +1,130 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    background-color: #eef1f5; /* Light, friendly background */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center content vertically */
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.game-container {
+    width: 90%;
+    max-width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    padding: 25px 30px;
+}
+
+.game-container header {
+    margin-bottom: 25px;
+}
+
+.game-container header h1 {
+    font-size: 2.2em;
+    color: #2c3e50; /* Dark blue */
+    margin-bottom: 8px;
+}
+.game-container header p {
+    font-size: 1em;
+    color: #555;
+}
+
+.game-main {
+    display: flex;
+    flex-direction: column; /* Stack game sections */
+    gap: 25px; /* Space between sections */
+}
+
+.game-section {
+    padding: 20px;
+    border: 1px solid #dce4ec;
+    border-radius: 8px;
+    background-color: #f9fafb;
+}
+
+.game-section h2 {
+    font-size: 1.6em;
+    color: #3498db; /* Blue for section titles */
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 0.95em;
+    color: #4a4a4a;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    min-height: 3em; /* Give some space for text */
+}
+
+.game-button {
+    padding: 12px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    color: white;
+}
+
+#button-a {
+    background-color: #2ecc71; /* Green */
+}
+#button-a:hover {
+    background-color: #27ae60;
+}
+
+#button-b {
+    background-color: #e74c3c; /* Red */
+}
+#button-b:hover {
+    background-color: #c0392b;
+}
+
+.game-button:active {
+    transform: scale(0.98);
+}
+
+.result-section {
+    margin-top: 10px; /* A bit less margin if sections are stacked */
+}
+
+.result-section h2 {
+    font-size: 1.6em;
+    color: #8e44ad; /* Purple for result title */
+    margin-bottom: 10px;
+}
+
+.result-display {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 6px;
+    min-height: 2.5em; /* Ensure it's visible */
+    line-height: 1.5;
+    border: 1px solid #ced4da;
+}
+
+.game-container footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dce4ec;
+    font-size: 0.9em;
+}
+.game-container footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+.game-container footer a:hover {
+    text-decoration: underline;
+}

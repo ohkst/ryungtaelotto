@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단 확률 게임</title>
+    <link rel="stylesheet" href="probability_game_style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>간단 확률 게임</h1>
+            <p>버튼을 선택하여 당신의 운을 시험해보세요!</p>
+        </header>
+
+        <main class="game-main">
+            <section class="game-section" id="section-a">
+                <h2>A 버튼 선택</h2>
+                <p class="description">버튼 A: 누르면 무조건 1억! (100% 확률)</p>
+                <button id="button-a" class="game-button">A 버튼</button>
+            </section>
+
+            <section class="game-section" id="section-b">
+                <h2>B 버튼 선택</h2>
+                <p class="description">버튼 B: 89% 확률로 1억, 10% 확률로 5억, 1% 확률로 꽝!</p>
+                <button id="button-b" class="game-button">B 버튼</button>
+            </section>
+
+            <section class="result-section">
+                <h2>게임 결과</h2>
+                <div id="game-result" class="result-display">버튼을 눌러 결과를 확인하세요.</div>
+            </section>
+        </main>
+
+        <footer>
+            <p><a href="../../index.html">포털 홈으로 돌아가기</a></p>
+        </footer>
+    </div>
+    <script src="probability_game_script.js"></script>
+</body>
+</html>
