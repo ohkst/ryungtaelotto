@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                const randomNumber = Math.floor(Math.random() * maxLottoNumber) + 1;
                numbers.add(randomNumber);
            }
-           if (numbers.size === NUMBERS_PER_SET) { 
+           if (numbers.size === NUMBERS_PER_SET) {
                 let hasSequential = false;
                 const sortedArr = Array.from(numbers).sort((a,b) => a-b);
                 for(let i=0; i < sortedArr.length -1; i++) {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
        console.warn("generateSequentialIncluded: Max attempts reached, falling back to random.");
        return generateCompletelyRandom();
     }
-   
+
     function generatePrimeCombination(minPrimes = 2) {
         let attempts = 0;
         while (attempts < MAX_GENERATION_ATTEMPTS) {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
        console.warn("generateFixedInterval: Not fully implemented, using random.");
        return generateCompletelyRandom();
     }
-   
+
     function generateRangeIntervalDistributed() {
        console.warn("generateRangeIntervalDistributed: Not fully implemented or similar to RangeBalanced, using random.");
        return generateCompletelyRandom();
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Promise(resolve => {
             setTimeout(() => {
                 // Initial placeholder or "spinning" look
-                slotElement.textContent = '...'; 
+                slotElement.textContent = '...';
                 playSound('spin'); // Sound for each slot starting to "spin"
 
                 setTimeout(() => {
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, delay);
         });
     }
-    
+
     // Prepare initial slots with reels for potential future animation
     lottoSlotElements.forEach(slot => {
         slot.innerHTML = '?'; // Initial display
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 5000); // Message visible for 5 seconds
         }
     }
-    
+
     // G. Main Number Generation Logic
     async function handleGenerateClick() {
         playSound('click');
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 generatedNumbers = generateCompletelyRandom();
                 break;
         }
-        
+
         // Ensure generatedNumbers is always an array of the correct size,
         // as fallback strategies should handle this.
         // Additional safety, though strategies should guarantee this:
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < NUMBERS_PER_SET; i++) { // Use NUMBERS_PER_SET
             animationPromises.push(animateSlot(lottoSlotElements[i], generatedNumbers[i], i * 300)); // Staggered delay
         }
-        
+
         await Promise.all(animationPromises); // Wait for all animations to complete
 
         // Simulated Win Calculation (very simple)
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
         addToHistory(generatedNumbers);
         updateHistoryDisplay();
         checkMiniJackpot(generatedNumbers);
-        
+
         generateButton.disabled = false; // Re-enable button
     }
 

@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
                  offsetResultDateP.textContent = '오류: 기준 날짜가 유효하지 않습니다.';
                  return;
             }
-            
+
             const offset = direction === 'after' ? daysOffset : -daysOffset;
             refDate.setDate(refDate.getDate() + offset);
-            
+
             offsetResultDateP.textContent = `결과: ${formatDate(refDate)}`;
         });
     }
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 diffResultDaysP.textContent = '오류: 시작 날짜와 종료 날짜를 모두 선택해주세요.';
                 return;
             }
-            
+
             // Use UTC to ensure consistent day difference calculation regardless of local timezone/DST
             const startDate = new Date(Date.UTC(...startDateStr.split('-').map((s, i) => i === 1 ? parseInt(s) - 1 : parseInt(s))));
             const endDate = new Date(Date.UTC(...endDateStr.split('-').map((s, i) => i === 1 ? parseInt(s) - 1 : parseInt(s))));
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (ageCalcDateInput && !ageCalcDateInput.value) {
         ageCalcDateInput.value = formatDate(new Date());
     }
-    
+
     if (calcAgeButton) {
         calcAgeButton.addEventListener('click', () => {
             const birthDateStr = birthDateInput.value;
@@ -100,12 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (!calcDateStr) { // If user clears it, default to today
                 calcDateStr = formatDate(new Date());
-                ageCalcDateInput.value = calcDateStr; 
+                ageCalcDateInput.value = calcDateStr;
             }
 
             const birthDate = new Date(birthDateStr + 'T00:00:00');
             const calcDate = new Date(calcDateStr + 'T00:00:00');
-            
+
             if (isNaN(birthDate.getTime()) || isNaN(calcDate.getTime())) {
                  ageResultP.textContent = '오류: 날짜 형식이 유효하지 않습니다.';
                  return;

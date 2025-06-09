@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             displayNeedsReset = false;
         } else {
             // Prevent excessively long numbers if display has fixed width
-            if (currentOperand.length >= 12) return; 
+            if (currentOperand.length >= 12) return;
             currentOperand += number;
         }
         updateDisplay();
@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function chooseOperation(selectedOperation) {
         if (currentOperand === '' && previousOperand === '') return; // Nothing to operate on
 
-        if (previousOperand !== '' && operation && !displayNeedsReset) { 
+        if (previousOperand !== '' && operation && !displayNeedsReset) {
             // If there's a previous op and new number entered, calculate first
             calculate();
         }
-        
+
         // If currentOperand is empty but previousOperand exists, it means user is chaining ops
         // e.g. 5 * = (sets previous to 5, op to *, current is empty), then user presses +
         // We should use the previousOperand as the new currentOperand to start the next op.
@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         operation = selectedOperation;
         currentOperand = ''; // Ready for next operand, or will be filled by result if equals is hit next
-        displayNeedsReset = true; 
+        displayNeedsReset = true;
         // Display can show previousOperand + operation symbol here if desired
         // displayElement.textContent = previousOperand + ' ' + operationSymbol(operation);
     }
-    
+
     function calculate() {
         let result;
         const prev = parseFloat(previousOperand);
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             default:
                 return; // No operation
         }
-        
+
         // Basic handling for floating point precision issues for display
         if (result.toString().includes('.')) {
              result = parseFloat(result.toFixed(8)); // Limit to 8 decimal places
@@ -128,10 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // After percent, typically an operation or equals would follow.
         // Some calculators apply it in context of an operation (e.g. 100+10% = 110)
         // This is a simpler "convert to percentage value"
-        displayNeedsReset = true; 
+        displayNeedsReset = true;
         updateDisplay();
     }
-    
+
     // Add event listeners to buttons
     buttons.forEach(button => {
         button.addEventListener('click', () => {

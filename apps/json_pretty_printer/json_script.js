@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('Failed to copy text: ', err);
                     errorMessageDiv.textContent = 'Error: Could not copy text to clipboard.';
                 });
-        } else if (textToCopy) { 
+        } else if (textToCopy) {
             // Fallback for older browsers or if navigator.clipboard is not available (less common now)
             // This fallback is very basic and might not work in all environments.
             try {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 textArea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textArea);
-                
+
                 const originalButtonText = copyButton.textContent;
                 copyButton.textContent = 'Copied!';
                 setTimeout(() => {

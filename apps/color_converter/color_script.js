@@ -2,11 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorPicker = document.getElementById('html-color-picker');
     const colorPreview = document.getElementById('color-preview');
     const previewText = document.getElementById('preview-text');
-    
+
     const hexInput = document.getElementById('hex-input');
     const rgbInput = document.getElementById('rgb-input');
     const hslInput = document.getElementById('hsl-input');
-    
+
     const copyButtons = document.querySelectorAll('.copy-button');
     const errorMessageDiv = document.getElementById('error-message-color');
 
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sourceField !== rgbInput) rgbInput.value = `rgb(${currentRgb.r}, ${currentRgb.g}, ${currentRgb.b})`;
         if (sourceField !== hslInput && hsl) hslInput.value = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
         if (sourceField !== colorPicker && hex) colorPicker.value = hex;
-        
+
         colorPreview.style.backgroundColor = hex || '#FFFFFF';
 
         // Update preview text color for contrast
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         previewText.style.color = brightness > 128 ? 'black' : 'white';
         previewText.textContent = hex || 'Invalid Color';
     }
-    
+
     // --- Event Listeners ---
     colorPicker.addEventListener('input', (e) => {
         const newRgb = hexToRgb(e.target.value);
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.target.classList.remove('invalid');
         }
     });
-    
+
     copyButtons.forEach(button => {
         button.addEventListener('click', () => {
             const format = button.dataset.format;
@@ -203,5 +203,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (initialRgb) {
         currentRgb = initialRgb;
     }
-    updateUI(); 
+    updateUI();
 });

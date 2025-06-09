@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         element.textContent = `오류: ${message}`;
         element.style.color = 'red'; // Or use a CSS class for errors
     }
-    
+
     function clearError(element) {
         element.textContent = '';
         element.style.color = ''; // Reset to default from CSS
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const timeInYears = (timeUnit === 'months') ? timePeriod / 12 : timePeriod;
             const rateDecimal = annualRate / 100;
-            
+
             const totalInterest = principal * rateDecimal * timeInYears;
             const totalAmount = principal + totalInterest;
 
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const ratePerPeriod = (annualRate / 100) / compoundFrequency;
             const numberOfPeriods = compoundFrequency * timeYears;
-            
+
             const totalAmount = principal * Math.pow((1 + ratePerPeriod), numberOfPeriods);
             const totalInterest = totalAmount - principal;
 

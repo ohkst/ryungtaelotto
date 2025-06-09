@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     controlButton.addEventListener('click', () => {
         if (timerIntervalId === null) { // Timer is stopped or paused, should start/resume
             referenceTime = Date.now() - (elapsedSeconds * 1000); // Subtract already elapsed time
-            
+
             timerIntervalId = setInterval(() => {
                 elapsedSeconds = Math.floor((Date.now() - referenceTime) / 1000);
                 updateDisplay();

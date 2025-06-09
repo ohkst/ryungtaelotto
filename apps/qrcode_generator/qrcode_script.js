@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     colorLight : "#ffffff",
                     correctLevel : QRCode.CorrectLevel.H
                 });
-                
+
                 // Make download button visible and functional for canvas
                 if (qrcodeDisplay.querySelector('canvas')) {
                     downloadButton.style.display = 'block';
@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
             downloadButton.style.display = 'block';
             // For API-generated images, direct JS download is tricky due to CORS.
             // Instruct user to right-click, or the button could open the image in a new tab.
-            downloadButton.textContent = 'QR 이미지 우클릭 저장'; 
+            downloadButton.textContent = 'QR 이미지 우클릭 저장';
             downloadButton.onclick = () => {
                 // Simplest action: open in new tab for easy save.
-                window.open(img.src, '_blank'); 
+                window.open(img.src, '_blank');
             };
         };
         img.onerror = () => {
